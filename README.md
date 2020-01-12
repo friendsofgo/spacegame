@@ -15,6 +15,7 @@ $ go run cmd/main.go
 
 * Arrow Left: Move left
 * Arrow Right: Move right
+* Space: Shoot
 
 ## WIP
 
@@ -23,7 +24,7 @@ package in our [blog](https://blog.friendsofgo.tech).
 
 We will include more functionalities like:
 
- - [] Shoot.
- - [] Enemies.
- - [] Destroy enemies.
- - [] More keys to move your spaceship.  
+ - [x] Shoot.
+ - [ ] Enemies.
+ - [ ] Destroy enemies.
+ - [ ] More keys to move your spaceship.  
