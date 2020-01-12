@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -40,22 +41,36 @@ func run() {
 	}
 
 	direction := spacegame.Idle
+	action := spacegame.NoneAction
+	last := time.Now()
+
 	for !win.Closed() {
+		dt := time.Since(last).Seconds()
+		last = time.Now()
+
 		win.Clear(colornames.Black)
 		world.Draw(win)
 
 		if win.Pressed(pixelgl.KeyLeft) {
-			direction = spacegame.Left
+			direction = spacegame.LeftDirection
 		}
 
 		if win.Pressed(pixelgl.KeyRight) {
-			direction = spacegame.Right
+			direction = spacegame.RightDirection
 		}
 
-		player.Update(direction)
+		if win.Pressed(pixelgl.KeySpace) {
+			action = spacegame.ShootAction
+		}
+
+		player.Update(direction, action, dt)
 		player.Draw(win)
 		direction = spacegame.Idle
+		action = spacegame.NoneAction
+
+		fps := 1 / dt
+		fmt.Println("FPS: ", int(fps))
+
 		win.Update()
-		time.Sleep(60 * time.Millisecond)
 	}
 }
