@@ -39,8 +39,7 @@ func NewPlayer(path string, life int, world *World) (*Player, error) {
 	initialPos := pixel.V(world.Bounds().W()/2, spr.Frame().H())
 
 	// Initialize the laser for the player
-	initialLaserPos := pixel.V(initialPos.X, initialPos.Y)
-	l, err := NewBaseLaser(laserImg, laserSfx, &initialLaserPos, laserVel, world)
+	l, err := NewBaseLaser(laserImg, laserSfx, laserVel, world)
 	if err != nil {
 		return nil, err
 	}

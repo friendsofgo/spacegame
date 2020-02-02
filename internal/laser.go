@@ -19,7 +19,7 @@ type Laser struct {
 	world     *World
 }
 
-func NewBaseLaser(path, sfxPath string, origPos *pixel.Vec, vel float64, world *World) (*Laser, error) {
+func NewBaseLaser(path, sfxPath string, vel float64, world *World) (*Laser, error) {
 	pic, err := loadPicture(path)
 	if err != nil {
 		return nil, err
@@ -27,7 +27,6 @@ func NewBaseLaser(path, sfxPath string, origPos *pixel.Vec, vel float64, world *
 
 	return &Laser{
 		pic:     pic,
-		pos:     origPos,
 		vel:     vel,
 		world:   world,
 		sfxPath: sfxPath,
